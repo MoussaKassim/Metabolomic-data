@@ -339,55 +339,78 @@
  </div>
         </section>
     <!-- Tutorial Section -->
-        <section id="Tutorial" class="data-section">
-            <div class="container">
-    <h2>Tutorial</h2>
-    <p>Here, we load the MetRef dataset. Columns with only zero values are removed.</p>
-    <pre><code>data(MetRef)
+<section id="Tutorial" class="data-section">
+    <div class="container">
+        <h2>Tutorial</h2>
+        <p>Here, we load the MetRef dataset. Columns with only zero values are removed.</p>
+        <div class="code-container">
+            <button class="copyButton"><i class="far fa-copy"></i></button>
+            <pre><code>data(MetRef)
 u = MetRef$data
 u = u[,-which(colSums(u) == 0)]
 </code></pre>
-    <p>We apply the Probabilistic Quotient Normalization</p>
-    <pre><code>u = normalization(u)$newXtrain
+        </div>
+        <p>We apply the Probabilistic Quotient Normalization</p>
+        <div class="code-container">
+            <button class="copyButton"><i class="far fa-copy"></i></button>
+            <pre><code>u = normalization(u)$newXtrain
 </code></pre>
-    <p>We mean-center and univariate scaling the data set.</p>
-    <pre><code>u = scaling(u)$newXtrain
+        </div>
+        <p>We mean-center and univariate scaling the data set.</p>
+        <div class="code-container">
+            <button class="copyButton"><i class="far fa-copy"></i></button>
+            <pre><code>u = scaling(u)$newXtrain
 </code></pre>
-    <p>Two classification vectors are created</p>
-    <pre><code>class = as.numeric(as.factor(MetRef$gender))
+        </div>
+        <p>Two classification vectors are created</p>
+        <div class="code-container">
+            <button class="copyButton"><i class="far fa-copy"></i></button>
+            <pre><code>class = as.numeric(as.factor(MetRef$gender))
 class2 = as.numeric(as.factor(MetRef$donor))
 </code></pre>
- </div>
-        </section>
+        </div>
+    </div>
+</section>
+
     <!-- MDS, tSNE and UMAP Section -->
-        <section id="MDS, tSNE and UMAP" class="data-section">
-            <div class="container">
-            <h2>MDS, tSNE and UMAP</h2>
-    <p>Different algorithms for dimensionality reduction are applied</p>
-    <pre><code>res_MDS = cmdscale(dist(u))
+<section id="MDS_tSNE_UMAP" class="data-section">
+    <div class="container">
+        <h2>MDS, tSNE and UMAP</h2>
+        <p>Different algorithms for dimensionality reduction are applied</p>
+        <div class="code-container">
+            <button class="copyButton"><i class="far fa-copy"></i></button>
+            <pre><code>res_MDS = cmdscale(dist(u))
 res_tSNE = Rtsne(u)$Y
 res_UMAP = umap(u)$layout
 </code></pre>
- </div>
-        </section>
+        </div>
+    </div>
+</section>
+
     <!-- KODAMA Section -->
-        <section id="KODAMA" class="data-section">
-            <div class="container">
-    <h2>KODAMA</h2>
-    <p>We apply KODAMA with Partial Least Square Discriminant Analysis (PLS-DA) as classifier with 50 components to drive the accuracy maximization. The KODAMA dissimilarity matrix is converted in a low dimensionality space using three different methods (i.e., MDS, t-SNE, and UMAP).</p>
-    <pre><code>kk = KODAMA.matrix(u, f.par = 50)
+<section id="KODAMA" class="data-section">
+    <div class="container">
+        <h2>KODAMA</h2>
+        <p>We apply KODAMA with Partial Least Square Discriminant Analysis (PLS-DA) as classifier with 50 components to drive the accuracy maximization. The KODAMA dissimilarity matrix is converted in a low dimensionality space using three different methods (i.e., MDS, t-SNE, and UMAP).</p>
+        <div class="code-container">
+            <button class="copyButton"><i class="far fa-copy"></i></button>
+            <pre><code>kk = KODAMA.matrix(u, f.par = 50)
 res_KODAMA_MDS = KODAMA.visualization(kk, method = "MDS")
 res_KODAMA_tSNE = KODAMA.visualization(kk, method = "t-SNE")
 res_KODAMA_UMAP = KODAMA.visualization(kk, method = "UMAP")
 </code></pre>
- </div>
-        </section>
+        </div>
+    </div>
+</section>
+
     <!-- Visualize the different clustering algorithms Section -->
-        <section id="Visualize the different clustering algorithms" class="data-section">
-            <div class="container">
-    <h2>Visualize the different clustering algorithms:</h2>
-    <p>a) Labelled by the gender</p>
-    <pre><code>par(mfrow = c(2, 3))
+<section id="Visualize_the_different_clustering_algorithms" class="data-section">
+    <div class="container">
+        <h2>Visualize the different clustering algorithms:</h2>
+        <p>a) Labelled by the gender</p>
+        <div class="code-container">
+            <button class="copyButton"><i class="far fa-copy"></i></button>
+            <pre><code>par(mfrow = c(2, 3))
 plot(res_MDS, pch = 21, bg = rainbow(2)[class], main = "MDS")
 plot(res_tSNE, pch = 21, bg = rainbow(2)[class], main = "tSNE")
 plot(res_UMAP, pch = 21, bg = rainbow(2)[class], main = "UMAP")
@@ -395,23 +418,28 @@ plot(res_KODAMA_MDS, pch = 21, bg = rainbow(2)[class], main = "KODAMA_MDS")
 plot(res_KODAMA_tSNE, pch = 21, bg = rainbow(2)[class], main = "KODAMA_tSNE")
 plot(res_KODAMA_UMAP, pch = 21, bg = rainbow(2)[class], main = "KODAMA_UMAP")
 </code></pre>
-    <p align="center">
-    <img src="https://github.com/tkcaccia/KODAMA/blob/main/figures/metabolites.gender.png" alt="Gender clustering">
-</p>
+        </div>
+        <p align="center">
+            <img src="https://github.com/tkcaccia/KODAMA/blob/main/figures/metabolites.gender.png" alt="Gender clustering">
+        </p>
 
-    <p>b) Labelled by the donor</p>
-    <pre><code>plot(res_MDS, pch = 21, bg = rainbow(22)[class2], main = "MDS")
+        <p>b) Labelled by the donor</p>
+        <div class="code-container">
+            <button class="copyButton"><i class="far fa-copy"></i></button>
+            <pre><code>plot(res_MDS, pch = 21, bg = rainbow(22)[class2], main = "MDS")
 plot(res_tSNE, pch = 21, bg = rainbow(22)[class2], main = "tSNE")
 plot(res_UMAP, pch = 21, bg = rainbow(22)[class2], main = "UMAP")
 plot(res_KODAMA_MDS, pch = 21, bg = rainbow(22)[class2], main = "KODAMA_MDS")
 plot(res_KODAMA_tSNE, pch = 21, bg = rainbow(22)[class2], main = "KODAMA_tSNE")
 plot(res_KODAMA_UMAP, pch = 21, bg = rainbow(22)[class2], main = "KODAMA_UMAP")
 </code></pre>
-    <p align="center">
-    <img src="https://github.com/MoussaKassim/Metabolomic-data/blob/main/metabolites.donor.png" alt="Donor clustering">
-</p>
- </div>
-        </section>
+        </div>
+        <p align="center">
+            <img src="https://github.com/MoussaKassim/Metabolomic-data/blob/main/metabolites.donor.png" alt="Donor clustering">
+        </p>
+    </div>
+</section>
+
         
     <!-- Bootstrap Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -476,6 +504,24 @@ sidebarLinks.forEach(function (link) {
             handleItemClick(item);
             addBackgroundOnHover(item);
         });
+       
+    var copyButton = document.getElementById('copyButton');
+    var codeBlock = document.querySelector('.code-container pre code');
+
+    copyButton.addEventListener('click', function() {
+        // Copier le contenu du code dans le presse-papiers
+        navigator.clipboard.writeText(codeBlock.innerText)
+            .then(function() {
+                // Changement de couleur de l'icône pour indiquer que la copie a réussi
+                copyButton.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(function() {
+                    copyButton.innerHTML = '<i class="far fa-copy"></i>';
+                }, 1000);
+            })
+            .catch(function(err) {
+                console.error('Failed to copy: ', err);
+            });
+    });
          </script>
 </body>
 
