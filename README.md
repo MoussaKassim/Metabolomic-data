@@ -73,7 +73,7 @@
         }
 
         .container {
-            padding-left: 8.5cm;
+            padding-left: 7.5cm;
         }
 
         .navbar-brand,
@@ -117,7 +117,7 @@
             left: 9.5cm;
             width: 180%;
             max-width: 260px;
-            max-height: 17%;
+            max-height: 19%;
             overflow-y: auto;
             box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.0);
             padding: 5px;
