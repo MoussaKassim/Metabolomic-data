@@ -155,7 +155,7 @@
 
         /* Main Content Styles */
         .container {
-            margin-left: 0.2cm;
+            margin-left: 1.5cm;
         }
 
         /* Sections Styles */
@@ -274,21 +274,33 @@
     <!-- Sidebar -->
     <div id="sidebar">
         <ul>
-            <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#software-tutorial">Tutorial</a></li>
-            <li><a href="#simulation">Simulation</a></li>
-            <li>
-                <a href="#">Data Analyses</a>
-                <ul>
-                    <li><a href="#mds">MDS</a></li>
-                    <li><a href="#tsne">tSNE</a></li>
-                    <li><a href="#umap">UMAP</a></li>
-                    <li><a href="#kodama">KODAMA</a></li>
-                </ul>
+            <li id="TutorialLink" data-toggle="tooltip" data-placement="right" title="Tutorial">
+                <a href="#Tutorial">
+                    <i class="fas fa-book-open"></i>
+                    <span>Tutorial</span>
+                </a>
+            </li>
+            <li id="MDS, tSNE and UMAPLink" data-toggle="tooltip" data-placement="right" title="MDS, tSNE and UMAP">
+                <a href="#MDS, tSNE and UMAP">
+                    <i class="fas fa-newspaper"></i>
+                    <span>MDS, tSNE and UMAP</span>
+                </a>
+            </li>
+            <li id="KODAMALink" data-toggle="tooltip" data-placement="right" title="KODAMA">
+                <a href="#KODAMA">
+                    <i class="fas fa-tools"></i>
+                    <span>KODAMA</span>
+                </a>
+            </li>
+            <li id="Visualize the different clustering algorithmsLink" data-toggle="tooltip" data-placement="right" title="Visualize the different clustering algorithms">
+                <a href="#Visualize the different clustering algorithms">
+                    <i class="fas fa-tasks"></i>
+                    <span>Visualize the different clustering algorithms</span>
+                </a>
             </li>
         </ul>
     </div>
-<script>
+     <script>
         // Fonction pour changer le style de l'élément actif
         function setActiveLink(linkId) {
             // Supprimer la classe active-link de tous les éléments
@@ -319,68 +331,89 @@
     </script>
    <!-- Main Content -->
 <div>
-  <h1>Metabolomic data</h1>
-  <p>The data belong to a cohort of 22 healthy donors (11 male and 11 female) where each provided about 40 urine samples over the time course of approximately 2 months, for a total of 873 samples. Each sample was analysed by Nuclear Magnetic Resonance Spectroscopy. Each spectrum was divided in 450 spectral bins.</p>
+ <!-- Metabolomic Data -->
+        <section id="Metabolomic Data" class="data-section">
+            <div class="container">
+    <h2>Metabolomic Data</h2>
+    <p>The data belong to a cohort of 22 healthy donors (11 male and 11 female) where each provided about 40 urine samples over the time course of approximately 2 months, for a total of 873 samples. Each sample was analysed by Nuclear Magnetic Resonance Spectroscopy. Each spectrum was divided in 450 spectral bins.</p>
+ </div>
+        </section>
+    <!-- Tutorial Section -->
+        <section id="Tutorial" class="data-section">
+            <div class="container">
+    <h2>Tutorial</h2>
+    <p>Here, we load the MetRef dataset. Columns with only zero values are removed.</p>
+    <pre><code>data(MetRef)
+u = MetRef$data
+u = u[,-which(colSums(u) == 0)]
+</code></pre>
+    <p>We apply the Probabilistic Quotient Normalization</p>
+    <pre><code>u = normalization(u)$newXtrain
+</code></pre>
+    <p>We mean-center and univariate scaling the data set.</p>
+    <pre><code>u = scaling(u)$newXtrain
+</code></pre>
+    <p>Two classification vectors are created</p>
+    <pre><code>class = as.numeric(as.factor(MetRef$gender))
+class2 = as.numeric(as.factor(MetRef$donor))
+</code></pre>
+ </div>
+        </section>
+    <!-- MDS, tSNE and UMAP Section -->
+        <section id="MDS, tSNE and UMAP" class="data-section">
+            <div class="container">
+            <h2>MDS, tSNE and UMAP</h2>
+    <p>Different algorithms for dimensionality reduction are applied</p>
+    <pre><code>res_MDS = cmdscale(dist(u))
+res_tSNE = Rtsne(u)$Y
+res_UMAP = umap(u)$layout
+</code></pre>
+ </div>
+        </section>
+    <!-- KODAMA Section -->
+        <section id="KODAMA" class="data-section">
+            <div class="container">
+    <h2>KODAMA</h2>
+    <p>We apply KODAMA with Partial Least Square Discriminant Analysis (PLS-DA) as classifier with 50 components to drive the accuracy maximization. The KODAMA dissimilarity matrix is converted in a low dimensionality space using three different methods (i.e., MDS, t-SNE, and UMAP).</p>
+    <pre><code>kk = KODAMA.matrix(u, f.par = 50)
+res_KODAMA_MDS = KODAMA.visualization(kk, method = "MDS")
+res_KODAMA_tSNE = KODAMA.visualization(kk, method = "t-SNE")
+res_KODAMA_UMAP = KODAMA.visualization(kk, method = "UMAP")
+</code></pre>
+ </div>
+        </section>
+    <!-- Visualize the different clustering algorithms Section -->
+        <section id="Visualize the different clustering algorithms" class="data-section">
+            <div class="container">
+    <h2>Visualize the different clustering algorithms:</h2>
+    <p>a) Labelled by the gender</p>
+    <pre><code>par(mfrow = c(2, 3))
+plot(res_MDS, pch = 21, bg = rainbow(2)[class], main = "MDS")
+plot(res_tSNE, pch = 21, bg = rainbow(2)[class], main = "tSNE")
+plot(res_UMAP, pch = 21, bg = rainbow(2)[class], main = "UMAP")
+plot(res_KODAMA_MDS, pch = 21, bg = rainbow(2)[class], main = "KODAMA_MDS")
+plot(res_KODAMA_tSNE, pch = 21, bg = rainbow(2)[class], main = "KODAMA_tSNE")
+plot(res_KODAMA_UMAP, pch = 21, bg = rainbow(2)[class], main = "KODAMA_UMAP")
+</code></pre>
+    <p align="center">
+        <img src="https://github.com/tkcaccia/KODAMA/blob/main/figures/metabolites.gender.png" alt="Gender clustering">
+    </p>
 
-  <h2>Tutorial</h2>
-  <p>Here, we load the MetRef dataset. Columns with only zero values are removed.</p>
-  <pre><code>data(MetRef)
-u=MetRef$data
-u=u[,-which(colSums(u)==0)]</code></pre>
-  
-  <p>We apply the Probabilistic Quotient Normalization</p>
-  <pre><code>u=normalization(u)$newXtrain</code></pre>
-  
-  <p>We mean-center and univariate scaling the data set.</p>
-  <pre><code>u=scaling(u)$newXtrain</code></pre>
-  
-  <p>Two classification vectors are created</p>
-  <pre><code>class=as.numeric(as.factor(MetRef$gender))
-class2=as.numeric(as.factor(MetRef$donor))</code></pre>
-
-  <h2>MDS, tSNE and UMAP</h2>
-  <p>Different algorithms for dimensionality reduction are applied</p>
-  <pre><code>res_MDS=cmdscale(dist(u))
-res_tSNE=Rtsne(u)$Y
-res_UMAP = umap(u)$layout</code></pre>
-
-  <h2>KODAMA</h2>
-  <p>We apply KODAMA with Partial Least Square Discriminant Analysis (PLS-DA) as classifier with 50 components to drive the accuracy maximization. The KODAMA dissimilarity matrix's is converted in a low dimensionality space using three different methods (i.e., MDS, t-SNE, and UMAP).</p>
-  <pre><code>kk=KODAMA.matrix(u,f.par = 50)
-res_KODAMA_MDS=KODAMA.visualization(kk,method = "MDS")
-res_KODAMA_tSNE=KODAMA.visualization(kk,method = "t-SNE")
-res_KODAMA_UMAP=KODAMA.visualization(kk,method = "UMAP")</code></pre>
-
-  <h2>Visualize the different clustering algorithms</h2>
-  <p>a) Labelled by the gender</p>
-  <pre><code>par(mfrow = c(2,3))
-plot(res_MDS,pch=21,bg=rainbow(2)[class],main="MDS")
-plot(res_tSNE,pch=21,bg=rainbow(2)[class],main="tSNE")
-plot(res_UMAP,pch=21,bg=rainbow(2)[class],main="UMAP")
-plot(res_KODAMA_MDS,pch=21,bg=rainbow(2)[class],main="KODAMA_MDS",)
-plot(res_KODAMA_tSNE,pch=21,bg=rainbow(2)[class],main="KODAMA_tSNE")
-plot(res_KODAMA_UMAP,pch=21,bg=rainbow(2)[class],main="KODAMA_UMAP")</code></pre>
-  
-  <p align="center">
-    <img src="https://github.com/tkcaccia/KODAMA/blob/main/figures/metabolites.gender.png" alt="Gender Clustering Visualization" />
-  </p>
-
-  <p>b) Labelled by the donor</p>
-  <pre><code>plot(res_MDS,pch=21,bg=rainbow(22)[class2],main="MDS")
-plot(res_tSNE,pch=21,bg=rainbow(22)[class2],main="tSNE")
-plot(res_UMAP,pch=21,bg=rainbow(22)[class2],main="UMAP")
-plot(res_KODAMA_MDS,pch=21,bg=rainbow(22)[class2],main="KODAMA_MDS",)
-plot(res_KODAMA_tSNE,pch=21,bg=rainbow(22)[class2],main="KODAMA_tSNE")
-plot(res_KODAMA_UMAP,pch=21,bg=rainbow(22)[class2],main="KODAMA_UMAP")</code></pre>
-  
-  <p align="center">
-    <img src="https://github.com/tkcaccia/KODAMA/blob/main/figures/metabolites.donor.png" alt="Donor Clustering Visualization" />
-  </p>
+    <p>b) Labelled by the donor</p>
+    <pre><code>plot(res_MDS, pch = 21, bg = rainbow(22)[class2], main = "MDS")
+plot(res_tSNE, pch = 21, bg = rainbow(22)[class2], main = "tSNE")
+plot(res_UMAP, pch = 21, bg = rainbow(22)[class2], main = "UMAP")
+plot(res_KODAMA_MDS, pch = 21, bg = rainbow(22)[class2], main = "KODAMA_MDS")
+plot(res_KODAMA_tSNE, pch = 21, bg = rainbow(22)[class2], main = "KODAMA_tSNE")
+plot(res_KODAMA_UMAP, pch = 21, bg = rainbow(22)[class2], main = "KODAMA_UMAP")
+</code></pre>
+    <p align="center">
+        <img src="https://github.com/tkcaccia/KODAMA/blob/main/figures/metabolites.donor.png" alt="Donor clustering">
+    </p>
 </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ </div>
+        </section>
+        </div>
 
     <!-- Bootstrap Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
