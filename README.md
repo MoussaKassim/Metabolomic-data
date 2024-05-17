@@ -73,7 +73,7 @@
         }
 
         .container {
-            padding-left: 7.1cm;
+            padding-left: 7.2cm;
         }
 
         .navbar-brand,
@@ -414,7 +414,6 @@ plot(res_KODAMA_UMAP, pch = 21, bg = rainbow(22)[class2], main = "KODAMA_UMAP")
  </div>
         </section>
         
-
     <!-- Bootstrap Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
