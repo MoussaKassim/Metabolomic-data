@@ -73,7 +73,7 @@
         }
 
         .container {
-            padding-left: 7.2cm;
+            padding-left: 7.3cm;
         }
 
         .navbar-brand,
