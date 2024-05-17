@@ -396,8 +396,8 @@ plot(res_KODAMA_tSNE, pch = 21, bg = rainbow(2)[class], main = "KODAMA_tSNE")
 plot(res_KODAMA_UMAP, pch = 21, bg = rainbow(2)[class], main = "KODAMA_UMAP")
 </code></pre>
     <p align="center">
-        <img ="https://github.com/tkcaccia/KODAMA/blob/main/figures/metabolites.gender.png" alt="Gender clustering">
-    </p>
+    <img src="https://github.com/tkcaccia/KODAMA/blob/main/figures/metabolites.gender.png" alt="Gender clustering">
+</p>
 
     <p>b) Labelled by the donor</p>
     <pre><code>plot(res_MDS, pch = 21, bg = rainbow(22)[class2], main = "MDS")
@@ -408,9 +408,9 @@ plot(res_KODAMA_tSNE, pch = 21, bg = rainbow(22)[class2], main = "KODAMA_tSNE")
 plot(res_KODAMA_UMAP, pch = 21, bg = rainbow(22)[class2], main = "KODAMA_UMAP")
 </code></pre>
     <p align="center">
-        <img ="https://github.com/MoussaKassim/Metabolomic-data/blob/main/metabolites.donor.png" alt="Donor clustering">
-    </p>
-</div>
+    <img src="https://github.com/MoussaKassim/Metabolomic-data/blob/main/metabolites.donor.png" alt="Donor clustering">
+</p>
+
  </div>
         </section>
         
