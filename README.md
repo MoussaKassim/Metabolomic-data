@@ -508,20 +508,22 @@ sidebarLinks.forEach(function (link) {
     var copyButton = document.getElementById('copyButton');
     var codeBlock = document.querySelector('.code-container pre code');
 
-    copyButton.addEventListener('click', function() {
-        // Copier le contenu du code dans le presse-papiers
-        navigator.clipboard.writeText(codeBlock.innerText)
-            .then(function() {
-                // Changement de couleur de l'icône pour indiquer que la copie a réussi
-                copyButton.innerHTML = '<i class="fas fa-check"></i>';
-                setTimeout(function() {
-                    copyButton.innerHTML = '<i class="far fa-copy"></i>';
-                }, 1000);
-            })
-            .catch(function(err) {
-                console.error('Failed to copy: ', err);
-            });
-    });
+    document.getElementById('copyButton1').addEventListener('click', function() {
+    var codeBlock = document.getElementById('codeBlock1');
+    var textToCopy = codeBlock.querySelector('code').innerText;
+    navigator.clipboard.writeText(textToCopy)
+        .then(function() {
+            // Changement de couleur du bouton pour indiquer que la copie a réussi
+            document.getElementById('copyButton1').classList.add('copied');
+            setTimeout(function() {
+                document.getElementById('copyButton1').classList.remove('copied');
+            }, 1000);
+        })
+        .catch(function(err) {
+            console.error('Failed to copy: ', err);
+        });
+});
+
          </script>
 </body>
 
