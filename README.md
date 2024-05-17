@@ -408,7 +408,7 @@ plot(res_KODAMA_tSNE, pch = 21, bg = rainbow(22)[class2], main = "KODAMA_tSNE")
 plot(res_KODAMA_UMAP, pch = 21, bg = rainbow(22)[class2], main = "KODAMA_UMAP")
 </code></pre>
     <p align="center">
-        <img src="https://github.com/tkcaccia/KODAMA/blob/main/figures/metabolites.donor.png" alt="Donor clustering">
+        <img src="[https://github.com/tkcaccia/KODAMA/blob/main/figures/metabolites.donor.png](https://github.com/MoussaKassim/Metabolomic-data/blob/main/metabolites.donor.png)" alt="Donor clustering">
     </p>
 </div>
  </div>
