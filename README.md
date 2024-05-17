@@ -215,36 +215,6 @@
         button.copied:hover {
             color: #218838;
         }
-    .copy-button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background-color: transparent;
-    border: none;
-    color: #007bff;
-    cursor: pointer;
-}
-
-.copy-button:hover {
-    color: #0056b3;
-}
-
-.copy-button.copied {
-    color: #28a745;
-    animation: pulse 1s;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
 
 
     </style>
