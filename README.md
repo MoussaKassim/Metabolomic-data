@@ -420,7 +420,7 @@ plot(res_KODAMA_UMAP, pch = 21, bg = rainbow(2)[class], main = "KODAMA_UMAP")
 </code></pre>
         </div>
         <p align="center">
-            <img src="https://github.com/tkcaccia/KODAMA/blob/main/figures/metabolites.gender.png" alt="Gender clustering">
+            <img src="https://gist.github.com/assets/168087487/58da2653-7283-4d1c-b9b5-f93a89da5b46" alt="Gender clustering">
         </p>
 
         <p>b) Labelled by the donor</p>
