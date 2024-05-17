@@ -413,7 +413,7 @@ plot(res_KODAMA_UMAP, pch = 21, bg = rainbow(22)[class2], main = "KODAMA_UMAP")
 </div>
  </div>
         </section>
-        </div>
+        
 
     <!-- Bootstrap Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
