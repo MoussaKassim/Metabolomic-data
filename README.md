@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<KODAMA>
 <html lang="en">
 
 <head>
@@ -10,23 +10,26 @@
     <style>
         /* Font Family and Size */
         body,
+        .navbar-nav .nav-link {color: #ffffff;
         .navbar-nav .nav-link {
             font-family: "Source Sans Pro", Arial, sans-serif;
             font-size: 16px;
-        }
-
+            color: #ffffff;
+            background-color: ;
+        }}
+         
         /* Navbar Styles */
         .navbar {
             position: fixed;
             top: 0;
-            left: 0;
+            left: 0cm;
             right: 0;
             z-index: 500;
             background-color: #333333;
             padding-top: 0;
             padding-bottom: 0;
             height: 50px;
-            width: 100%;
+            width: calc(100%);
         }
 
         .navbar-brand {
@@ -34,14 +37,33 @@
         }
 
         .navbar-nav .nav-item {
-            margin-bottom: 0px;
+            margin-bottom: 04px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            box-shadow: 0 109px 109px rgba(0, 0, 0, 0);
+        }
+
+        .navbar-nav .nav-link {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .navbar-nav .nav-item:nth-child(1) {
+            margin-top: 20px;
+        }
+
+        .navbar-nav .nav-item:nth-child(2) {
+            margin-top: 20px;
+        }
+
+        .navbar-nav .nav-item:nth-child(3) {
+            margin-top: 20px;
         }
 
         .navbar-nav .nav-item:nth-child(4) {
+            margin-top: 20px;
             margin-right: 10cm;
             margin-left: auto;
         }
@@ -54,9 +76,34 @@
             padding-left: 8.5cm;
         }
 
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            padding: 0.1px 1rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .navbar-brand {
+            font-size: 20px;
+            margin-right: 5px;
+            position: relative;
+            display: block;
+        }
+
+        .navbar-brand:hover,
+        .navbar-nav .nav-link:hover {
+            text-decoration: none;
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            margin-left: 05px;
+        }
+
         /* Body padding to compensate for fixed navbar */
         body {
-            padding-top: 50px;
+            padding-top: 0cm;
             background-color: #ffffff;
             color: #333;
             margin: 0;
@@ -67,12 +114,12 @@
             position: fixed;
             top: 2.5cm;
             bottom: 2cm;
-            left: 7.5cm;
+            left: 9.5cm;
             width: 180%;
             max-width: 260px;
             max-height: 17%;
             overflow-y: auto;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.0);
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.0);
             padding: 5px;
             line-height: 20px;
             border-radius: 6px;
@@ -92,7 +139,7 @@
         }
 
         #sidebar ul li:hover {
-            background-color: #f4f4f4;
+            background-color: #none;
         }
 
         #sidebar ul li a {
@@ -132,11 +179,13 @@
 
         /* Code container styles */
         .code-container {
-            background-color: #f4f4f4;
+            position: relative;
+            background-color: #f8f9fa;
             border: 1px solid #ccc;
-            border-radius: 5px;
             padding: 10px;
-            margin-bottom: 20px;
+            margin-top: 10px;
+            border-radius: 6px;
+            overflow: hidden;
         }
 
         pre {
@@ -166,54 +215,13 @@
         button.copied:hover {
             color: #218838;
         }
-
-        .card {
-            transition: transform 0.3s;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .card-deck {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
-
-        .card-deck .card {
-            flex: 0 0 calc(33.333% - 20px);
-            max-width: calc(33.333% - 20px);
-            margin-bottom: 20px;
-        }
-
-        @media (max-width: 992px) {
-            .card-deck .card {
-                flex: 0 0 calc(50% - 20px);
-                max-width: calc(50% - 20px);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .card-deck .card {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
-        }
+    
 
     </style>
 </head>
 
 <body>
-    <!-- Navbar -->
+        <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="#">KODAMA</a>
@@ -228,7 +236,7 @@
                         <a class="nav-link" href="#introduction">Introduction</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#software-tutorial">Tutorial</a>
+                        <a class="nav-link" href="#software-tutorial">Software Tutorial</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#simulation">Simulation</a>
@@ -239,20 +247,30 @@
                             Data Analyses
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#mds">MDS</a>
-                            <a class="dropdown-item" href="#tsne">tSNE</a>
-                            <a class="dropdown-item" href="#umap">UMAP</a>
-                            <a class="dropdown-item" href="#kodama">KODAMA</a>
+                            <a class="dropdown-item"
+                                href="https://github.com/tkcaccia/KODAMA/blob/main/docs/Metabolomics_data.md">Metabolomic
+                                data</a>
+                            <a class="dropdown-item"
+                                href="https://github.com/tkcaccia/KODAMA/blob/main/docs/Single_cell_RNA_seq.md">Single
+                                cell RNA seq data</a>
+                            <a class="dropdown-item"
+                                href="https://github.com/tkcaccia/KODAMA/blob/main/docs/Spatial%20_transcriptomic.md">Spatial
+                                Transcriptomic data</a>
                         </div>
                     </li>
                 </ul>
-                <div class="navbar-nav ml-auto">
-                    <a class="nav-link source-code-link" href="#">Source Code</a>
-                </div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/tkcaccia/KODAMA">
+                            <span class="fab fa-github"></span>
+                            Source code
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
-
+   
     <!-- Sidebar -->
     <div id="sidebar">
         <ul>
@@ -270,127 +288,164 @@
             </li>
         </ul>
     </div>
+<script>
+        // Fonction pour changer le style de l'élément actif
+        function setActiveLink(linkId) {
+            // Supprimer la classe active-link de tous les éléments
+            var links = document.querySelectorAll('#sidebar ul li');
+            links.forEach(function (item) {
+                item.classList.remove('active-link');
+            });
 
-    <!-- Main Content -->
-    <div class="container">
-        <section id="introduction" class="data-section">
-            <div class="container">
-                <h2>Metabolomic data</h2>
-                <p>
-                    The data belong to a cohort of 22 healthy donors (11 male and 11 female) where each provided
-                    about 40 urine samples over the time course of approximately 2 months, for a total of 873 samples.
-                    Each sample was analysed by Nuclear Magnetic Resonance Spectroscopy. Each spectrum was divided in
-                    450 spectral bins.
-                </p>
-            </div>
-        </section>
+            // Ajouter la classe active-link à l'élément sélectionné
+            var selectedLink = document.getElementById(linkId);
+            selectedLink.classList.add('active-link');
+        }
 
-        <section id="software-tutorial" class="data-section">
-            <div class="container">
-                <h2>Tutorial</h2>
-                <p>
-                    Here, we load the MetRef dataset. Columns with only zero values are removed.
-                </p>
-                <div class="code-container">
-                    <pre><code>
-data(MetRef)
+        // Ajouter un écouteur d'événement pour chaque élément de la barre latérale
+        var sidebarLinks = document.querySelectorAll('#sidebar ul li');
+        sidebarLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                // Empêcher le comportement par défaut du lien
+                event.preventDefault();
+                
+                // Récupérer l'ID de l'élément cliqué
+                var linkId = event.currentTarget.id;
+                
+                // Appeler la fonction pour définir l'élément actif
+                setActiveLink(linkId);
+            });
+        });
+    </script>
+   <!-- Main Content -->
+<div>
+  <h1>Metabolomic data</h1>
+  <p>The data belong to a cohort of 22 healthy donors (11 male and 11 female) where each provided about 40 urine samples over the time course of approximately 2 months, for a total of 873 samples. Each sample was analysed by Nuclear Magnetic Resonance Spectroscopy. Each spectrum was divided in 450 spectral bins.</p>
+
+  <h2>Tutorial</h2>
+  <p>Here, we load the MetRef dataset. Columns with only zero values are removed.</p>
+  <pre><code>data(MetRef)
 u=MetRef$data
-u=u[,-which(colSums(u)==0)]
-                    </code></pre>
-                </div>
-                <p>
-                    We apply the Probabilistic Quotient Normalization
-                </p>
-                <div class="code-container">
-                    <pre><code>
-u=normalization(u)$newXtrain
-                    </code></pre>
-                </div>
-                <p>
-                    We mean-center and univariate scaling the data set.
-                </p>
-                <div class="code-container">
-                    <pre><code>
-u=scaling(u)$newXtrain
-                    </code></pre>
-                </div>
-                <p>
-                    Two classification vectors are created
-                </p>
-                <div class="code-container">
-                    <pre><code>
-class=as.numeric(as.factor(MetRef$gender))
-class2=as.numeric(as.factor(MetRef$donor))
-                    </code></pre>
-                </div>
-                <p>
-                    Different algorithms for dimensionality reduction are applied
-                </p>
-                <div class="code-container">
-                    <pre><code>
-res_MDS=cmdscale(dist(u))
+u=u[,-which(colSums(u)==0)]</code></pre>
+  
+  <p>We apply the Probabilistic Quotient Normalization</p>
+  <pre><code>u=normalization(u)$newXtrain</code></pre>
+  
+  <p>We mean-center and univariate scaling the data set.</p>
+  <pre><code>u=scaling(u)$newXtrain</code></pre>
+  
+  <p>Two classification vectors are created</p>
+  <pre><code>class=as.numeric(as.factor(MetRef$gender))
+class2=as.numeric(as.factor(MetRef$donor))</code></pre>
+
+  <h2>MDS, tSNE and UMAP</h2>
+  <p>Different algorithms for dimensionality reduction are applied</p>
+  <pre><code>res_MDS=cmdscale(dist(u))
 res_tSNE=Rtsne(u)$Y
-res_UMAP = umap(u)$layout
-                    </code></pre>
-                </div>
-                <p>
-                    We apply KODAMA with Partial Least Square Discriminant Analysis (PLS-DA) as classifier with 50
-                    components to drive the accuracy maximization. The KODAMA dissimilarity matrix's is converted in a
-                    low dimensionality space using three different methods (i.e., MDS, t-SNE, and UMAP).
-                </p>
-                <div class="code-container">
-                    <pre><code>
-kk=KODAMA.matrix(u,f.par = 50)
+res_UMAP = umap(u)$layout</code></pre>
+
+  <h2>KODAMA</h2>
+  <p>We apply KODAMA with Partial Least Square Discriminant Analysis (PLS-DA) as classifier with 50 components to drive the accuracy maximization. The KODAMA dissimilarity matrix's is converted in a low dimensionality space using three different methods (i.e., MDS, t-SNE, and UMAP).</p>
+  <pre><code>kk=KODAMA.matrix(u,f.par = 50)
 res_KODAMA_MDS=KODAMA.visualization(kk,method = "MDS")
 res_KODAMA_tSNE=KODAMA.visualization(kk,method = "t-SNE")
-res_KODAMA_UMAP=KODAMA.visualization(kk,method = "UMAP")
-                    </code></pre>
-                </div>
-                <p>
-                    Visualize the different clustering algorithms:
-                </p>
-                <p>
-                    a) labelled by the gender
-                </p>
-                <div class="code-container">
-                    <pre><code>
-par(mfrow = c(2,3))
+res_KODAMA_UMAP=KODAMA.visualization(kk,method = "UMAP")</code></pre>
+
+  <h2>Visualize the different clustering algorithms</h2>
+  <p>a) Labelled by the gender</p>
+  <pre><code>par(mfrow = c(2,3))
 plot(res_MDS,pch=21,bg=rainbow(2)[class],main="MDS")
 plot(res_tSNE,pch=21,bg=rainbow(2)[class],main="tSNE")
 plot(res_UMAP,pch=21,bg=rainbow(2)[class],main="UMAP")
 plot(res_KODAMA_MDS,pch=21,bg=rainbow(2)[class],main="KODAMA_MDS",)
 plot(res_KODAMA_tSNE,pch=21,bg=rainbow(2)[class],main="KODAMA_tSNE")
-plot(res_KODAMA_UMAP,pch=21,bg=rainbow(2)[class],main="KODAMA_UMAP")
-                    </code></pre>
-                </div>
-                <p align="center">
-                    <img src="https://github.com/tkcaccia/KODAMA/blob/main/figures/metabolites.gender.png"
-                        alt="Clustering by gender" />
-                </p>
-                <p>
-                    b) labelled by the donor
-                </p>
-                <div class="code-container">
-                    <pre><code>
-plot(res_MDS,pch=21,bg=rainbow(22)[class2],main="MDS")
+plot(res_KODAMA_UMAP,pch=21,bg=rainbow(2)[class],main="KODAMA_UMAP")</code></pre>
+  
+  <p align="center">
+    <img src="https://github.com/tkcaccia/KODAMA/blob/main/figures/metabolites.gender.png" alt="Gender Clustering Visualization" />
+  </p>
+
+  <p>b) Labelled by the donor</p>
+  <pre><code>plot(res_MDS,pch=21,bg=rainbow(22)[class2],main="MDS")
 plot(res_tSNE,pch=21,bg=rainbow(22)[class2],main="tSNE")
 plot(res_UMAP,pch=21,bg=rainbow(22)[class2],main="UMAP")
 plot(res_KODAMA_MDS,pch=21,bg=rainbow(22)[class2],main="KODAMA_MDS",)
 plot(res_KODAMA_tSNE,pch=21,bg=rainbow(22)[class2],main="KODAMA_tSNE")
-plot(res_KODAMA_UMAP,pch=21,bg=rainbow(22)[class2],main="KODAMA_UMAP")
-                    </code></pre>
-                </div>
-                <p align="center">
-                    <img src="https://github.com/tkcaccia/KODAMA/blob/main/figures/metabolites.donor.png"
-                        alt="Clustering by donor" />
-                </p>
-            </div>
-        </section>
-    </div>
+plot(res_KODAMA_UMAP,pch=21,bg=rainbow(22)[class2],main="KODAMA_UMAP")</code></pre>
+  
+  <p align="center">
+    <img src="https://github.com/tkcaccia/KODAMA/blob/main/figures/metabolites.donor.png" alt="Donor Clustering Visualization" />
+  </p>
+</div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+    <!-- JavaScript for interactive functionality -->
+    <script>
+    // Fonction pour déplacer la page vers l'élément correspondant
+function scrollToSection(sectionId) {
+    var section = document.getElementById(sectionId);
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Ajouter un écouteur d'événement pour chaque élément de la barre latérale
+var sidebarLinks = document.querySelectorAll('#sidebar ul li');
+sidebarLinks.forEach(function (link) {
+    link.addEventListener('click', function (event) {
+        // Empêcher le comportement par défaut du lien
+        event.preventDefault();
+
+        // Récupérer l'ID de la section correspondante
+        var sectionId = link.querySelector('a').getAttribute('href').replace('#', '');
+
+        // Défiler jusqu'à la section correspondante
+        scrollToSection(sectionId);
+    });
+});
+
+        // Fonction pour ajouter la classe de couleur de fond au survol
+        function addBackgroundOnHover(element) {
+            element.addEventListener('mouseenter', function () {
+                element.classList.add('bg-color');
+            });
+            element.addEventListener('mouseleave', function () {
+                element.classList.remove('bg-color');
+            });
+        }
+
+        // Fonction pour gérer le clic sur un élément de la liste
+        function handleItemClick(element) {
+            element.addEventListener('click', function () {
+                // Supprimer la classe de couleur de fond de tous les éléments
+                var listItems = document.querySelectorAll('.nav-item');
+                listItems.forEach(function (item) {
+                    item.classList.remove('bg-color');
+                });
+
+                // Ajouter la classe de couleur de fond à l'élément cliqué
+                element.classList.add('bg-color');
+            });
+        }
+
+        // Sélectionnez tous les éléments de la liste du menu
+        var menuItems = document.querySelectorAll('.nav-item');
+
+        // Ajouter la logique d'interaction pour chaque élément de la liste du menu
+        menuItems.forEach(function (item) {
+            handleItemClick(item);
+            addBackgroundOnHover(item);
+        });
+         </script>
 </body>
 
 </html>
