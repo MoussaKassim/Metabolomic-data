@@ -435,7 +435,7 @@ plot(res_KODAMA_UMAP, pch = 21, bg = rainbow(22)[class2], main = "KODAMA_UMAP")
 </code></pre>
         </div>
         <p align="center">
-            <img src="https://github.com/MoussaKassim/Metabolomic-data/blob/main/metabolites.donor.png" alt="Donor clustering">
+            <img src="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9887019/bin/fmolb-09-1070394-g002.jpg" alt="Donor clustering">
         </p>
     </div>
 </section>
